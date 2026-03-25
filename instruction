@@ -1,0 +1,34 @@
+# Student Grades API
+
+REST-сервис на FastAPI для загрузки и анализа успеваемости студентов.
+
+# Описание
+
+Разработан REST-сервис для загрузки успеваемости студентов из CSV‑файла и последующего анализа. 
+Сервис сохраняет данные в PostgreSQL, выполняет валидацию и предоставляет две аналитические ручки. 
+Работа с базой данных осуществляется только через сырые SQL‑запросы (без ORM).
+
+# Требования
+
+- "Python 3.11"
+- "Git" (для клонирования)
+- "FastAPI" – веб-фреймворк
+- "PostgreSQL" – реляционная база данных
+- "Docker и Docker Compose" – контейнеризация (дополнительно)
+- "pytest" – тестирование (дополнительно)
+
+---
+
+# Способ 1 (Локально)
+- git clone (https://github.com/svechindanila25/stud_grades_api.git)
+- cd stud_grades_api
+- python -m venv venv
+- venv\Scripts\activate ()
+- pip install -r requirements.txt
+- uvicorn app.main:app --reload
+
+# Способ 2 (Через Docker)
+- git clone (https://github.com/svechindanila25/stud_grades_api.git)
+- docker-compose up --build
+
+После запуска сервис доступен по адресу http://localhost:8000/docs
