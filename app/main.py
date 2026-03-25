@@ -15,9 +15,7 @@ async def upload_grades(file: UploadFile = File(...)):
         df = pd.read_csv(StringIO(contents.decode('utf-8-sig')), sep=';')
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Error reading CSV: {str(e)}")
-
     df.columns = df.columns.str.replace('\ufeff', '').str.strip()
-
     required_columns = ['Дата', 'Номер группы', 'ФИО', 'Оценка']
     missing = [col for col in required_columns if col not in df.columns]
     if missing:
@@ -44,7 +42,6 @@ async def upload_grades(file: UploadFile = File(...)):
         "records_loaded": records_loaded,
         "students": students
     }
-
 @app.get("/students/more-than-3-twos")
 async def more_than_3_twos():
     conn = get_db_connection()
@@ -55,7 +52,6 @@ async def more_than_3_twos():
     finally:
         conn.close()
     return result
-
 @app.get("/students/less-than-5-twos")
 async def less_than_5_twos():
     conn = get_db_connection()

@@ -11,12 +11,9 @@ good_csv = """Дата;Номер группы;ФИО;Оценка
 bad_grade_csv = """Дата;Номер группы;ФИО;Оценка
 11.03.2025;101Б;Курочкин Антон Владимирович;6
 """
-
-# CSV с неправильной датой
 bad_date_csv = """Дата;Номер группы;ФИО;Оценка
 2025-03-11;101Б;Курочкин Антон Владимирович;4
 """
-
 def test_upload_good_csv():
     response = client.post(
         "/upload-grades",
@@ -27,7 +24,6 @@ def test_upload_good_csv():
     assert data["status"] == "ok"
     assert data["records_loaded"] == 3
     assert data["students"] == 3
-
 def test_upload_bad_grade():
     response = client.post(
         "/upload-grades",
@@ -35,7 +31,6 @@ def test_upload_bad_grade():
     )
     assert response.status_code == 400
     assert "Grades must be between 2 and 5" in response.text
-
 def test_upload_bad_date():
     response = client.post(
         "/upload-grades",

@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   db:
     image: postgres:15
@@ -12,7 +11,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-
   app:
     build: .
     ports:
@@ -27,6 +25,5 @@ services:
       DB_PASSWORD: 1111
     volumes:
       - ./app:/app/app
-
 volumes:
   postgres_data:

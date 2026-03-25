@@ -1,6 +1,5 @@
 //main.cpp
 #include "StringProcessor.h"
-
 int main(int argc, char* argv[]) {
     if (argc < 2) {
         std::cerr << "Использование: " << argv[0] << " <имя_файла>" <<
